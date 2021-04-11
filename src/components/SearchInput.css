@@ -1,0 +1,10 @@
+
+.input-search{
+    width: 40%;
+    margin-top: 20px!important;
+}
+@media only screen and (max-width: 600px) {
+  .input-search{
+    width: 80%;
+  }
+}
