@@ -20,10 +20,10 @@ const IssuesList = () => {
   const issuesCards = issues.map((issue, index) => {
     if(issues.length-1 === index){
       return(
-        <>
-          <IssueCard key={issue.id} issue={issue}/>
+        <React.Fragment key={issue.id}>
+          <IssueCard issue={issue}/>
           <Waypoint onEnter={loadMoreIssues}/>
-        </>
+        </React.Fragment>
       )
     }
     return <IssueCard key={issue.id} issue={issue}/>

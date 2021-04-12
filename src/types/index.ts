@@ -1,3 +1,5 @@
+import { Ref } from "react"
+
 export type LabelType = {
   id: number,
   node_id: string,
@@ -77,5 +79,6 @@ export type IssuesStateType = {
 }
 
 export type SearchInputProps = {
+  // inputRef: Ref<HTMLInputElement>,
   setSearchText:React.Dispatch<React.SetStateAction<string>>
 }

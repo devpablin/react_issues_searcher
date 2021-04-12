@@ -5,9 +5,16 @@ import TextField from "@material-ui/core/TextField";
 import "./SearchInput.css";
 import { getIssues, clearIssues, stopLoading } from "../store/actions";
 import { SearchInputProps } from "../types";
+import { useHotkeys } from "react-hotkeys-hook";
 
 const SearchInput = ({setSearchText}:SearchInputProps ) => {
   const dispatch = useDispatch();
+  const searchInputRef = React.useRef<HTMLInputElement>();
+  useHotkeys('/', ()=>{
+    if(searchInputRef.current){
+      searchInputRef.current.focus();
+    }
+  })
   const handleChange = debounce((text:string) => {
     if(text===''){
       dispatch(clearIssues());
@@ -19,8 +26,10 @@ const SearchInput = ({setSearchText}:SearchInputProps ) => {
   },500);
   return (
     <TextField
+      inputRef={searchInputRef}
+      autoFocus
       className="input-search"
-      id="standard-search"
+      id="search-issues-input"
       label="Search Issues"
       type="search"
       variant="filled"
