@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# React Issues Searcher
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Assumptions
+I used MaterialUI components for the input search and the issue cards\
+I used Redux for state management\
+For the search functionality, i used the [Search API](https://docs.github.com/en/rest/reference/search) from github\
+An infinite scrolling component is applied.
+
+
+## Keyboard Shortcuts
+
+Press <kbd>/</kbd> to focus on the search input.\
+Press <kbd>Enter</kbd> after typing the search to unfocus the input and navigate through the issues.\
+Press <kbd>&#8595;</kbd> and <kbd>&#8593;</kbd> to navigate in the list of issues
 
 ## Available Scripts
 
