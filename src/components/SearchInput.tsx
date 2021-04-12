@@ -1,29 +1,39 @@
 import * as React from "react";
-import { useDispatch } from "react-redux";
 import { debounce } from 'lodash';
 import TextField from "@material-ui/core/TextField";
 import "./SearchInput.css";
-import { getIssues, clearIssues, stopLoading } from "../store/actions";
 import { SearchInputProps } from "../types";
 import { useHotkeys } from "react-hotkeys-hook";
+import { useIssuesDispatch } from "../hooks";
 
 const SearchInput = ({setSearchText}:SearchInputProps ) => {
-  const dispatch = useDispatch();
+  const {clearIssues, stopLoading, getIssues} = useIssuesDispatch();
   const searchInputRef = React.useRef<HTMLInputElement>();
-  useHotkeys('/', ()=>{
+
+  useHotkeys('/', (event)=>{
+    event.preventDefault();
+    event.stopPropagation();
     if(searchInputRef.current){
       searchInputRef.current.focus();
     }
   })
+  useHotkeys('command+e, ctrl+e', (event)=>{
+    event.preventDefault();
+    event.stopPropagation();
+    if(searchInputRef.current){
+      searchInputRef.current.blur();
+    }
+  })
   const handleChange = debounce((text:string) => {
     if(text===''){
-      dispatch(clearIssues());
-      dispatch(stopLoading(''));
+      clearIssues();
+      stopLoading('');
     } else {
-      dispatch(getIssues(text, 1));
+      getIssues(text, 1);
     }
     setSearchText(text);
   },500);
+
   return (
     <TextField
       inputRef={searchInputRef}
@@ -33,6 +43,16 @@ const SearchInput = ({setSearchText}:SearchInputProps ) => {
       label="Search Issues"
       type="search"
       variant="filled"
+      inputProps={{
+        onKeyPress: event => {
+          console.log(event.key);
+          if(event.key === "Enter"){
+            event.preventDefault();
+            event.stopPropagation();
+            searchInputRef.current?.blur();
+          }
+        }
+      }}
       onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event.target.value)}
     />
   );
