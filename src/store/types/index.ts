@@ -1,2 +1,5 @@
 export const LOAD_ISSUES = 'LOAD_ISSUES';
 export const CLEAR_ISSUES = 'CLEAR_ISSUES';
+export const LOAD_MORE_ISSUES = 'LOAD_MORE_ISSUES';
+export const START_LOADING = 'START_LOADING';
+export const STOP_LOADING = 'STOP_LOADING';

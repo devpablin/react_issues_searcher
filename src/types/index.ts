@@ -56,5 +56,26 @@ export type IssueType = {
 }
 export type ActionIssues = {
   type: string,
-  data: IssueType[]
+  data: IssueType[],
+  total: number
+}
+
+export type ActionLoader = {
+  type: string,
+  data: boolean,
+  message: string
+}
+
+export type LoaderStateType = {
+  loading: boolean,
+  message: string
+}
+
+export type IssuesStateType = {
+  issues: IssueType[],
+  total: number
+}
+
+export type SearchInputProps = {
+  setSearchText:React.Dispatch<React.SetStateAction<string>>
 }

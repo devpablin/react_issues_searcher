@@ -3,12 +3,19 @@ import { useDispatch } from "react-redux";
 import { debounce } from 'lodash';
 import TextField from "@material-ui/core/TextField";
 import "./SearchInput.css";
-import { getIssues } from "../store/actions";
-const SearchInput = () => {
+import { getIssues, clearIssues, stopLoading } from "../store/actions";
+import { SearchInputProps } from "../types";
+
+const SearchInput = ({setSearchText}:SearchInputProps ) => {
   const dispatch = useDispatch();
   const handleChange = debounce((text:string) => {
-    if(text==='') dispatch(clearIssues());
-    if(text!=='') dispatch(getIssues(text, 1));
+    if(text===''){
+      dispatch(clearIssues());
+      dispatch(stopLoading(''));
+    } else {
+      dispatch(getIssues(text, 1));
+    }
+    setSearchText(text);
   },500);
   return (
     <TextField

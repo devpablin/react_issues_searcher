@@ -1,4 +1,4 @@
-import { Button, Card, CardActions, CardContent, Typography } from "@material-ui/core";
+import { Card, CardContent, Typography} from "@material-ui/core";
 import * as React from "react";
 import { textTruncate } from "../helpers";
 import { IssueType } from "../types";
@@ -16,9 +16,7 @@ const IssueCard = ({issue}: {issue:IssueType}) => {
           {textTruncate(issue.body, 150)}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+
     </Card>
   );
 };
