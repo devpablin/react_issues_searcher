@@ -10,7 +10,7 @@ const IssuesList = () => {
   const [page, setPage] = React.useState(2);
   const [searchText, setSearchText] = React.useState('');
   const [currentIssue, setCurrentIssue] = React.useState(0);
-  const [selectedIssue, setSelectedIssue] = React.useState(-1);
+  //const [selectedIssue, setSelectedIssue] = React.useState(-1);
 
   const {issues, loading, hasMore, message} = useIssuesState();
   const { getIssues } = useIssuesDispatch();
@@ -28,7 +28,6 @@ const IssuesList = () => {
     event.preventDefault();
     event.stopPropagation();
     setCurrentIssue(prevCurrentIssue =>{
-      console.log(issues.length)
       if(prevCurrentIssue >= issues.length - 1 ) return prevCurrentIssue
       return prevCurrentIssue + 1
     });
