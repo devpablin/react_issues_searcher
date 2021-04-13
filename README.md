@@ -11,7 +11,9 @@ An infinite scrolling component is applied.
 
 Press <kbd>/</kbd> to focus on the search input.\
 Press <kbd>Enter</kbd> after typing the search to unfocus the input and navigate through the issues.\
-Press <kbd>&#8595;</kbd> and <kbd>&#8593;</kbd> to navigate in the list of issues
+Press <kbd>&#8595;</kbd> and <kbd>&#8593;</kbd> OR <kbd>j</kbd> adn <kbd>k</kbd>to navigate in the list of issues\
+Press <kbd>Enter</kbd> to see the details of the issue\
+Press <kbd>Esc</kbd> to go back to the issues list\
 
 ## Available Scripts
 
