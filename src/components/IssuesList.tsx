@@ -32,7 +32,7 @@ const IssuesList = () => {
       event.preventDefault();
       event.stopPropagation();
       setCurrentIssue((prevCurrentIssue) => {
-        if (prevCurrentIssue === -1) return prevCurrentIssue;
+        if (prevCurrentIssue === 0) return prevCurrentIssue;
         return prevCurrentIssue - 1;
       });
     },
@@ -51,11 +51,17 @@ const IssuesList = () => {
     },
     [issues]
   );
+  const openModal = ()=>{
+    if(issues[currentIssue]){
+      console.log(issues[currentIssue]);
+      setShowModal(true)
+    }
+  }
 
   useHotkeys(
     "enter",
-    (event) => {
-      setShowModal(true);
+    () => {
+      openModal();
     },
     [issues]
   );
