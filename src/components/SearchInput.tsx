@@ -1,26 +1,26 @@
 import * as React from "react";
-import { debounce } from 'lodash';
+import { debounce } from "lodash";
 import TextField from "@material-ui/core/TextField";
 import "./SearchInput.css";
 import { SearchInputProps } from "../types";
 import { useHotkeys } from "react-hotkeys-hook";
 import { useIssuesDispatch } from "../hooks";
 
-const SearchInput = ({setSearchText}:SearchInputProps ) => {
+const SearchInput = ({ setSearchText }: SearchInputProps) => {
   const { getIssues } = useIssuesDispatch();
   const searchInputRef = React.useRef<HTMLInputElement>();
 
-  useHotkeys('/', (event)=>{
+  useHotkeys("/", (event) => {
     event.preventDefault();
     event.stopPropagation();
-    if(searchInputRef.current){
+    if (searchInputRef.current) {
       searchInputRef.current.focus();
     }
-  })
-  const handleChange = debounce((text:string) => {
+  });
+  const handleChange = debounce((text: string) => {
     getIssues(text, 1);
     setSearchText(text);
-  },500);
+  }, 500);
 
   return (
     <TextField
@@ -32,16 +32,18 @@ const SearchInput = ({setSearchText}:SearchInputProps ) => {
       type="search"
       variant="filled"
       inputProps={{
-        onKeyPress: event => {
+        onKeyPress: (event) => {
           console.log(event.key);
-          if(event.key === "Enter" || event.key === "Escape"){
+          if (event.key === "Enter" || event.key === "Escape") {
             event.preventDefault();
             event.stopPropagation();
             searchInputRef.current?.blur();
           }
-        }
+        },
       }}
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) => handleChange(event.target.value)}
+      onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+        handleChange(event.target.value)
+      }
     />
   );
 };

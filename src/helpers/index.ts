@@ -4,7 +4,7 @@
  * @param {number=} length Maximum length allowed
  * @param {string=} ending String to put at the end of the truncate.
  */
- export const textTruncate = (str = '', length = 100, ending = '...') => {
+export const textTruncate = (str = "", length = 100, ending = "...") => {
   if (str.length > length) {
     return str.substring(0, length - ending.length) + ending;
   } else {

@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import { issues } from './issues';
-import { loader } from './loader';
+import { issues } from "./issues";
+import { loader } from "./loader";
 
 export const appReducer = combineReducers({
   issues,
-  loader
-})
+  loader,
+});
 
 export type RootState = ReturnType<typeof appReducer>;

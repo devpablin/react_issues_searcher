@@ -2,7 +2,7 @@ import { Card, CardContent, Chip, Typography} from "@material-ui/core";
 import * as React from "react";
 import { textTruncate } from "../helpers";
 import { IssueType } from "../types";
-import './IssueCard.css'
+import './IssueCard.css';
 
 const IssueCard = ({issue, className, active, onClick}: {issue:IssueType, className?:string, active:boolean, onClick:()=>void}) => {
 
