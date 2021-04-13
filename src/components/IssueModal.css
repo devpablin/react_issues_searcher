@@ -1,0 +1,20 @@
+.issue-modal{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 500px;
+  background-color: azure;
+  padding: 20px
+}
+.issue-body-markdown{
+  width: 90%;
+  margin: auto;
+  height: 300px;
+  overflow-y: scroll;
+  margin-top: 10px;
+}
+.issue-labels{
+  padding: 10px;
+}

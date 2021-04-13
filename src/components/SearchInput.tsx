@@ -17,20 +17,8 @@ const SearchInput = ({setSearchText}:SearchInputProps ) => {
       searchInputRef.current.focus();
     }
   })
-  useHotkeys('command+e, ctrl+e', (event)=>{
-    event.preventDefault();
-    event.stopPropagation();
-    if(searchInputRef.current){
-      searchInputRef.current.blur();
-    }
-  })
   const handleChange = debounce((text:string) => {
-    if(text===''){
-      clearIssues();
-      stopLoading('');
-    } else {
-      getIssues(text, 1);
-    }
+    getIssues(text, 1);
     setSearchText(text);
   },500);
 
@@ -46,7 +34,7 @@ const SearchInput = ({setSearchText}:SearchInputProps ) => {
       inputProps={{
         onKeyPress: event => {
           console.log(event.key);
-          if(event.key === "Enter"){
+          if(event.key === "Enter" || event.key === "Escape"){
             event.preventDefault();
             event.stopPropagation();
             searchInputRef.current?.blur();
