@@ -7,7 +7,7 @@ import { useHotkeys } from "react-hotkeys-hook";
 import { useIssuesDispatch } from "../hooks";
 
 const SearchInput = ({setSearchText}:SearchInputProps ) => {
-  const {clearIssues, stopLoading, getIssues} = useIssuesDispatch();
+  const { getIssues } = useIssuesDispatch();
   const searchInputRef = React.useRef<HTMLInputElement>();
 
   useHotkeys('/', (event)=>{
